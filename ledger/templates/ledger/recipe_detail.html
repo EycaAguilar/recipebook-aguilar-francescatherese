@@ -1,0 +1,17 @@
+{% extends 'ledger/base.html' %}
+{% block title %}{{ name }}{% endblock %}
+{% block page_title %}{{ name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ recipe.name }}</h1>
+    <h2>Author: {{ recipe.author.username }}</h2>
+    <h2>Ingredients:</h2>
+    <ul>
+        {% for ingredient in ingredients %}
+            <li>{{ ingredient.quantity }} of {{ ingredient.name }}</li>
+        {% empty %}
+            <li>No ingredients listed.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'recipe_list' %}">Back to Recipes</a>
+{% endblock %}

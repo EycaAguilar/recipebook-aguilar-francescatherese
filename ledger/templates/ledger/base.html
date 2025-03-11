@@ -1,0 +1,30 @@
+{# all templates extends this #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>{{ recipe.name }} - Recipe Book</title>
+</head>
+<body>
+   <header>
+    <h1>Recipe Book</h1>
+       <h2>{% block page_title %}{% endblock %}</h2>
+
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}!</p>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Recipe Book</p>
+    </footer>
+</body>
+</html>
