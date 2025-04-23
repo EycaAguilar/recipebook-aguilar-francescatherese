@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Recipe Book{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header><h1>My Recipe Book</h1></header>
+    <main>
+        {% block content %}{% endblock %}
+
+        {% if user.is_authenticated %}
+  <p>Welcome, {{ user.username }}! <a href="{% url 'ledger:logout' %}">Logout</a></p>
+{% else %}
+  <a href="{% url 'ledger:login' %}">Login</a>
+{% endif %}
+
+    </main>
+</body>
+</html>
